@@ -92,7 +92,7 @@ var finances = [
   // array.length
   // Need a variable to store the value of array.length
 let months_counted = finances.length;
-
+console.log(months_counted)
  
 // The net total amount of Profit / Losses over the entire period.
 
@@ -100,10 +100,14 @@ let rollingTotal = 0;
 
 // for loop to iterate over the array
     // Inside that for loop, access position 1 of each array element to get the numbers
-for( let i = 0 ; i<= finances.length; i++){
-let loss = finances[1];
-rollingTotal = rollingTotal + loss[1];
+for( let i = 0 ; i < finances.length; i++){
+let profit_or_loss = finances[i][1];
+rollingTotal = rollingTotal + profit_or_loss;
+
 }
+
+
+console.log(rollingTotal)
 
 // The average of the changes in Profit / Losses over the entire period.
 // You will need to track what the total change in profits are from month to month and then find the average.
@@ -118,3 +122,11 @@ let monthlyChanges =[];
 let gratest_ProfitMonth;
 let greatest_LossMonth;
 
+let totalChanges = finances[0][1];
+
+for( let i = 0 ; i < finances.length - 1; i++){
+  let change = finances[i + 1][1] - finances[i][1];
+totalChanges += change;
+  }
+
+  console.log(totalChanges / months_counted)
