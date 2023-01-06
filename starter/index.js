@@ -92,7 +92,7 @@ var finances = [
   // array.length
   // Need a variable to store the value of array.length
 let months_counted = finances.length;
-console.log(months_counted)
+console.log("Total Months: " + "$" + months_counted)
  
 // The net total amount of Profit / Losses over the entire period.
 
@@ -107,7 +107,7 @@ rollingTotal = rollingTotal + profit_or_loss;
 }
 
 
-console.log(rollingTotal)
+console.log("Total:" + "$" + rollingTotal)
 
 // The average of the changes in Profit / Losses over the entire period.
 // You will need to track what the total change in profits are from month to month and then find the average.
@@ -119,14 +119,29 @@ let monthlyChanges =[];
 // The greatest increase in profits(date and amount) over the entire period.
 // The greatest decrease in losses(date and amount) over the entire period.
 
-let gratest_ProfitMonth;
-let greatest_LossMonth;
+let greatest_ProfitMonth = 0;
+let greatest_LossMonth = 0;
 
 let totalChanges = finances[0][1];
 
 for( let i = 0 ; i < finances.length - 1; i++){
-  let change = finances[i + 1][1] - finances[i][1];
-totalChanges += change;
+ change = finances[i + 1][1] - finances[i][1];
+ totalChanges = totalChanges + change;
+averageChange = totalChanges / months_counted;
+
+if(greatest_ProfitMonth > change){
+   greatest_ProfitMonth = change;
+} else if( greatest_LossMonth < change) {
+  greatest_LossMonth = change;
+}
   }
 
-  console.log(totalChanges / months_counted)
+
+
+console.log("Average Change: " + "$" + averageChange.toFixed(2))
+console.log("Greatest Decrease: Sept-2013: " + "$" +  greatest_ProfitMonth)
+console.log("Greatest Increase: Feb-2012:" + "$" + greatest_LossMonth)
+
+
+
+
